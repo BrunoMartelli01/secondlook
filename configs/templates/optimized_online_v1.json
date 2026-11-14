@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "mode": "approximate",
+  "claim_label": "approximate reproduction",
+  "target_venue": "IJDAR",
+  "study_id": "IJDAR-OPTIMIZED-ONLINE-20261102-V1",
+  "baseline_config": "$REPO/configs/approximate/deepsolo_ticls_router_v1.json",
+  "output_root": "$RUNS/ijdar-reuse-ctw-20261102-v1",
+  "stage1_variant": "qualified_calibrated",
+  "storage": {
+    "minimum_free_bytes": 12884901888,
+    "expected_new_bytes": 1073741824,
+    "policy": "reuse raw caches; compact arrays/scores only; no new neural checkpoints"
+  },
+  "seeds": [
+    11,
+    23,
+    47
+  ],
+  "budgets": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "selection_budgets": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "primary_budget": 0.5,
+  "head_kinds": [
+    "ridge",
+    "hgb"
+  ],
+  "ridge_alpha": 50.0,
+  "hgb": {
+    "iterations": 60,
+    "leaves": 7,
+    "l2": 5.0,
+    "minimum_leaf": 20
+  },
+  "cpu_threads": 4,
+  "automatically_selected_features": 8,
+  "rgb_features": {
+    "maximum_side": 256,
+    "tiles_per_axis": 4,
+    "edge_threshold": 0.2,
+    "dark_threshold": 0.1,
+    "bright_threshold": 0.9
+  },
+  "hierarchical_trust": 0.5,
+  "bootstrap_repetitions": 2000,
+  "bootstrap_seed": 20261102,
+  "noninferiority_margin_pp": 0.5,
+  "parameters": {
+    "deepsolo_measured": 33748854,
+    "ticls_measured": 96116048
+  },
+  "success_criteria": {
+    "minimum_online_latency_reduction": 0.15,
+    "noninferiority_margin_pp": 0.5,
+    "novelty": "reliable improvement beyond confidence/CTC gates and transfer; nominal test gains alone insufficient"
+  },
+  "fusion": {
+    "minimum_polygon_iou": 0.45,
+    "disjoint_maximum_iou": 0.1,
+    "high_probability": 0.95,
+    "suppress_probability": 0.05,
+    "ridge_alpha": 50.0,
+    "calibration_folds": 5,
+    "oracle_minimum_gain_pp": 0.5,
+    "probability_margin": 0.1,
+    "arbitration_minimum_gain": 0.1,
+    "logistic_C": 1.0,
+    "logistic_max_iter": 1000
+  },
+  "protocol": {
+    "fitting": "584 development images per seed",
+    "selection": "80 disjoint development images per seed",
+    "audit": "fixed historical CAL64 excluded from all new fitting and selection; historically inspected, not a fresh confirmatory set",
+    "test": "TEST300/500 historically explored; no final confirmatory claim",
+    "expert_training_overlap": "official pretrained experts saw official TRAIN; no claim of expert-unseen validation",
+    "budgets": "unlabelled batch top-k; separate validation-threshold transfer; no target GT ranking",
+    "cost": "reconstructed recorded per-image costs; separate from measured online benchmark"
+  },
+  "scientific_choices": [
+    {
+      "classification": "ASSUMPTION",
+      "ambiguity": "IJDAR-ADAPTIVE-ROUTER-20261102-001",
+      "choice": "Finite supervised routing/fusion/pre-routing study, not original-paper STRICT reproduction. All method grids, seeds, feature settings, budgets and success criteria declared in this config; choose heads exclusively on selection, never CAL or TEST."
+    },
+    {
+      "classification": "REPOSITORY_SPECIFIED",
+      "choice": "Reuse hash-qualified official per-image counts, raster manifests and author DeepSolo/TiCLS outputs from the independently reviewed V1 study."
+    },
+    {
+      "classification": "HARDWARE_DEVIATION",
+      "choice": "PAPER RTX3090 24GB, existing isolated Python3.11 fitting and Python3.8 official polygon/evaluator/neural processes; no target8GB performance claim."
+    },
+    {
+      "classification": "UNRESOLVED",
+      "choice": "No genuinely untouched expert-unseen confirmatory dataset currently qualified. Any noninferiority inference on historical CAL/TEST remains exploratory; IJDAR acceptance cannot be guaranteed."
+    },
+    {
+      "classification": "REPOSITORY_SPECIFIED",
+      "choice": "Correct historical DeepSolo scalar count from33,745,911 to33,748,854, independently reported by qualified strict-load provenance and enforced during fresh native model loading. Neural outputs and scientific thresholds unchanged. New online profile only; preserve historical snapshots."
+    },
+    {
+      "classification": "HARDWARE_DEVIATION",
+      "choice": "Measured retained-cache two-worker ICDAR2015 OOM on RTX3090. Release only idle CUDA allocator cache at handover; preserve model/FP32/resolution and include IPC/cache-management cost in timing. Original OOM traces retained."
+    },
+    {
+      "classification": "HARDWARE_DEVIATION",
+      "choice": "Complete source TEST inference with cached/batched TiCLS language decoding. Compare every fresh body to qualified native body before carrying over a metric. Both checkpoints unchanged; one warm full batch per source domain; timing descriptive."
+    },
+    {
+      "classification": "REPOSITORY_SPECIFIED",
+      "choice": "Native own-output teacher-forcing probe identifies PAD termination with near-zero CE versus high EOS CE. Stop at first PAD/EOS, cached word batching; full body parity required. This is an engineering control, not a novel research claim."
+    },
+    {
+      "classification": "ASSUMPTION",
+      "choice": "Rerun original source-frozen routers against currently qualified PAD/KV/batched TiCLS. Fixed RGB-only16-image TEST sample per dataset,2 reverse-order repeats, IPC/export included. Partial online latency, not full-dataset latency; both models resident in all arms. No target policy refit."
+    }
+  ],
+  "pinned_inputs": {
+    "$RUNS/deepsolo-compact-outputs/final_benchmark_summary.json": "9316a73c64ebe1e52eea5b165243f1f5c2b3bc4645f9aab7d3a59941532c01f2",
+    "$RUNS/deepsolo-compact-outputs/train_prepared/totaltext/observations.json": "44f0ca8416e69bfb2792d6d1364d0d1b8466192f21cc9aa289d15ebec4108507",
+    "$RUNS/sota-expert-router-v1/reference_test_v2/totaltext/per_image.json": "56363b764333ccb0789cf4496148cef878731fa9003d24ef0aa6724f0ab4a734",
+    "$RUNS/deepsolo-compact-outputs/compact_deepsolo/totaltext_train.json": "db3fec3e575e84d7d613d261e3be2b93fc4fbe89c685443e08c1f353eb431632",
+    "$RUNS/deepsolo-compact-outputs/compact_deepsolo/totaltext_test.json": "689345da90d1aa1d183f416b4f0d8cf655c74d34de041c69a1df5b49e8e7a793",
+    "$RUNS/sota-expert-router-v1/yolo_cascade_v1/inputs/totaltext_pool_canonical_v2.json": "13df29411f5e223009b85627a25694f91c5ecdbc249bb86611cca0ef1edaf02d",
+    "$RUNS/sota-expert-router-v1/inputs/totaltext_test_rgb_only.json": "b416c5523c9ee6588311e22379b0775f4e813aa78ba6a4b83cad3155cd9eac9b",
+    "$RUNS/deepsolo-compact-outputs/train_prepared/icdar2015/observations.json": "da6f716be3783e3cb9da83a77568d8c0ab3df946f3f05157bf5c9275065fdd61",
+    "$RUNS/sota-expert-router-v1/reference_test_v2/icdar2015/per_image.json": "ccf47c9936b1c397261af696174278b45c747929e0406107fe400d20bfd07cde",
+    "$RUNS/deepsolo-compact-outputs/compact_deepsolo/icdar2015_train.json": "7b30dd135efef8f8801880db43848a9974564712d4944f46625f1d0ba15feba0",
+    "$RUNS/deepsolo-compact-outputs/compact_deepsolo/icdar2015_test.json": "41ef7b6f76c9e755d0cdae201f74a59bd2a55f87e0ab6d6e413ae8ffc1878732",
+    "$RUNS/sota-expert-router-v1/yolo_cascade_v1/inputs/icdar2015_pool_canonical_v2.json": "e66fa970121e5ded715d8482fa15507389ab3d92f589bc299b020eef12f8627a",
+    "$RUNS/sota-expert-router-v1/inputs/icdar2015_test_rgb_only.json": "d096ea8952835c092303131c11a317ba89d1ebe9890fc9f3cdcf4d6ddb012139",
+    "$RUNS/uniform-unet-fusion-20261030-v1/deployment_boundary_v1/profiles/totaltext.json": "2cbe4fcd38d9c9db7ca5103df0df232e1ecab854595f62cb344980509658e32a",
+    "$RUNS/deepsolo-icdar2015-gap-20261028-v1/runtime.json": "31bdcdd1e6043a04319bcabe4e76a91e2b2f0e76567be7718cd0427d7ed01696",
+    "$RUNS/sota-expert-router-v1/reference_test_v2/totaltext/resolved_configuration.json": "3d990666a047c3a6dd6a810ed1de219a933cb33416070a738425baee0019cc75",
+    "$RUNS/uniform-unet-fusion-20261030-v1/deployment_boundary_v1/profiles/icdar2015.json": "d4641da94a24ce5a13bceaa009c1933ca530426c19c3124868850098d5c3c195",
+    "$RUNS/sota-expert-router-v1/reference_test_v2/icdar2015/resolved_configuration.json": "3d990666a047c3a6dd6a810ed1de219a933cb33416070a738425baee0019cc75"
+  },
+  "online": {
+    "datasets": {
+      "totaltext": {
+        "deepsolo_profile": "$RUNS/uniform-unet-fusion-20261030-v1/deployment_boundary_v1/profiles/totaltext.json",
+        "deepsolo_runtime": "$RUNS/deepsolo-icdar2015-gap-20261028-v1/runtime.json",
+        "deepsolo_source": "$ARTIFACTS/deepsolo-host/DeepSolo-upstream/DeepSolo",
+        "ticls_config": "$RUNS/sota-expert-router-v1/reference_test_v2/totaltext/resolved_configuration.json"
+      },
+      "icdar2015": {
+        "deepsolo_profile": "$RUNS/uniform-unet-fusion-20261030-v1/deployment_boundary_v1/profiles/icdar2015.json",
+        "deepsolo_runtime": "$RUNS/deepsolo-icdar2015-gap-20261028-v1/runtime.json",
+        "deepsolo_source": "$ARTIFACTS/deepsolo-host/DeepSolo-upstream/DeepSolo",
+        "ticls_config": "$RUNS/sota-expert-router-v1/reference_test_v2/icdar2015/resolved_configuration.json"
+      }
+    },
+    "legacy_python": "$PYTHON",
+    "images_per_dataset": 16,
+    "repetitions": 2,
+    "warmup_images": 2,
+    "sample_seed": 20261102,
+    "methods": [
+      "always_ticls",
+      "cascade_all44",
+      "direct_rgb"
+    ],
+    "output_directory": "optimized_online",
+    "lifecycle": "both models resident; release idle allocator cache before stages, charge overhead to wall time"
+  },
+  "cached_sources": {
+    "datasets": [
+      "totaltext",
+      "icdar2015"
+    ]
+  },
+  "pad_language": {
+    "termination": "first EOS or PAD",
+    "qualification": "Compare every fresh body to prior qualified complete outputs; no metric carryover on mismatch."
+  },
+  "optimized_online": {
+    "frozen_manifest": "$RUNS/icdar-router-research-20261102-v1/frozen/manifest.json",
+    "frozen_manifest_sha256": "4b7306ac30adb8863ec058548f3102a05f31d83a5c3f2add85fb5a16d0317569"
+  }
+}

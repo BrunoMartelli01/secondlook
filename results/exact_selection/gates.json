@@ -1,0 +1,180 @@
+{
+ "claim_label": "approximate reproduction",
+ "G1": {
+  "rows": {
+   "deepsolo_totaltext": {
+    "identical": true,
+    "kept_sets": 5,
+    "images": 1251,
+    "s_cached": 82,
+    "s_whole": 88
+   },
+   "deepsolo_icdar2015": {
+    "identical": true,
+    "kept_sets": 5,
+    "images": 1000,
+    "s_cached": 30,
+    "s_whole": 28
+   },
+   "ticls_totaltext": {
+    "identical": true,
+    "kept_sets": 5,
+    "images": 1251,
+    "s_cached": 41,
+    "s_whole": 42
+   },
+   "ticls_icdar2015": {
+    "identical": true,
+    "kept_sets": 5,
+    "images": 1000,
+    "s_cached": 25,
+    "s_whole": 25
+   },
+   "ppocr_totaltext": {
+    "identical": true,
+    "kept_sets": 5,
+    "images": 1251,
+    "s_cached": 26,
+    "s_whole": 29
+   },
+   "ppocr_icdar2015": {
+    "identical": true,
+    "kept_sets": 5,
+    "images": 1000,
+    "s_cached": 22,
+    "s_whole": 22
+   },
+   "deepsolo_ctw1500": {
+    "identical": true,
+    "kept_sets": 5,
+    "images": 1000,
+    "s_cached": 75,
+    "s_whole": 107
+   },
+   "ticls_ctw1500": {
+    "identical": true,
+    "kept_sets": 5,
+    "images": 1000,
+    "s_cached": 65,
+    "s_whole": 74
+   },
+   "ppocr_ctw1500": {
+    "identical": true,
+    "kept_sets": 5,
+    "images": 998,
+    "s_cached": 32,
+    "s_whole": 61
+   }
+  },
+  "mismatches": []
+ },
+ "G2": {
+  "compared": 389,
+  "mismatches": [
+   [
+    "ablations/ticls_icdar2015/counts_table10_argmax.npz",
+    "array mlp differs"
+   ],
+   [
+    "ablations/ticls_icdar2015/meta_table10_argmax.json",
+    "json numeric leaves differ: ['/arms/mlp/f1']"
+   ]
+  ],
+  "families": {
+   "main/p3": 120,
+   "main/audit": 18,
+   "main/tables": 6,
+   "stability": 12,
+   "lc/out": 5,
+   "ablations": 8,
+   "crossdata": 5,
+   "readers": 211,
+   "accuracy": 4
+  }
+ },
+ "G3": {
+  "rows": {
+   "deepsolo_totaltext": {
+    "main_c_k": true,
+    "main_first_complete": true,
+    "main_baseline_counts": true,
+    "stability_all_gate_flag": "passed",
+    "stability_baseline_counts": true,
+    "stability_first_complete": true
+   },
+   "deepsolo_icdar2015": {
+    "main_c_k": true,
+    "main_first_complete": true,
+    "main_baseline_counts": true,
+    "stability_all_gate_flag": "passed",
+    "stability_baseline_counts": true,
+    "stability_first_complete": true
+   },
+   "ticls_totaltext": {
+    "main_c_k": true,
+    "main_first_complete": true,
+    "main_baseline_counts": true,
+    "stability_all_gate_flag": "passed",
+    "stability_baseline_counts": true,
+    "stability_first_complete": true
+   },
+   "ticls_icdar2015": {
+    "main_c_k": true,
+    "main_first_complete": true,
+    "main_baseline_counts": true,
+    "stability_all_gate_flag": "passed",
+    "stability_baseline_counts": true,
+    "stability_first_complete": true
+   },
+   "ppocr_totaltext": {
+    "main_c_k": true,
+    "main_first_complete": true,
+    "main_baseline_counts": true,
+    "stability_all_gate_flag": "passed",
+    "stability_baseline_counts": true,
+    "stability_first_complete": true
+   },
+   "ppocr_icdar2015": {
+    "main_c_k": true,
+    "main_first_complete": true,
+    "main_baseline_counts": true,
+    "stability_all_gate_flag": "passed",
+    "stability_baseline_counts": true,
+    "stability_first_complete": true
+   },
+   "deepsolo_ctw1500": {
+    "main_c_k": true,
+    "main_first_complete": true,
+    "main_baseline_counts": true,
+    "stability_all_gate_flag": "passed",
+    "stability_baseline_counts": true,
+    "stability_first_complete": true
+   },
+   "ticls_ctw1500": {
+    "main_c_k": true,
+    "main_first_complete": true,
+    "main_baseline_counts": true,
+    "stability_all_gate_flag": "passed",
+    "stability_baseline_counts": true,
+    "stability_first_complete": true
+   },
+   "ppocr_ctw1500": {
+    "main_c_k": true,
+    "main_first_complete": true,
+    "main_baseline_counts": true,
+    "stability_all_gate_flag": "passed",
+    "stability_baseline_counts": true,
+    "stability_first_complete": true
+   }
+  },
+  "mismatches": []
+ },
+ "G4": {
+  "files": 637,
+  "entries": 900,
+  "by_where": {
+   "pooled_f1 (unregistered)": 900
+  },
+  "train_selection_fallbacks": []
+ }
+}

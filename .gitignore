@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+configs/approximate/
+runs/
+artifacts/
+datasets/
+out/
+*.npz
+*.pkl
+*.ckpt
+.release_build

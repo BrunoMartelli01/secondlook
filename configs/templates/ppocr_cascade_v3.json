@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "mode": "approximate",
+  "claim_label": "approximate reproduction",
+  "study_id": "COMPACT-OCR-CASCADE-20261103-V3",
+  "output_root": "$RUNS/ppocr-predictions",
+  "previous_study_config": "$REPO/configs/approximate/dataset_router_architecture_v1.json",
+  "baseline_config": "$REPO/configs/approximate/deepsolo_ticls_router_v1.json",
+  "datasets": {
+    "totaltext": {
+      "train_inputs": "$RUNS/sota-expert-router-v1/yolo_cascade_v1/inputs/totaltext_pool_canonical_v2.json",
+      "test_inputs": "$RUNS/sota-expert-router-v1/inputs/totaltext_test_rgb_only.json",
+      "train_images": 728,
+      "test_images": 300,
+      "train_heavy_npz": {
+        "path": "$RUNS/icdar-router-research-20261102-v1/prepared/totaltext_none_train.npz",
+        "sha256": "4e3e21e9ee6363a72facac5b3589040c7ed6171c845fe4b4d6d9976b9e837328"
+      },
+      "test_heavy_npz": {
+        "path": "$RUNS/icdar-router-research-20261102-v1/prepared/totaltext_none_test.npz",
+        "sha256": "344d2ce8676574b7c5873a85080e2b9afd5495be1a996eec8274b111f0c06236"
+      },
+      "test_heavy_counts_key": "ticls_counts",
+      "train_id_map": "$RUNS/sota-expert-router-v1/yolo_cascade_v1/training_inputs/totaltext/id_map.json",
+      "train_gt_zip": "$RUNS/sota-expert-router-v1/yolo_cascade_v1/training_inputs/totaltext/gt.zip",
+      "train_protocol": "native_rrc_word",
+      "test_protocol": "native_rrc_word",
+      "evaluation_dataset": "totaltext",
+      "test_ticls_predictions": "$RUNS/ijdar-reuse-ctw-20261102-v1/cached_sources/totaltext/predictions.json",
+      "test_gt_zip": "$ARTIFACTS/official-benchmark-audit-20261031-v1/gt_totaltext.zip",
+      "test_eval_spec": {
+        "images": 300,
+        "primary_quota": 150,
+        "lexicon": "None",
+        "plan": "$RUNS/uniform-unet-fusion-20261030-v1/full/totaltext/resolved_configuration.json",
+        "per_image": "$RUNS/uniform-unet-fusion-20261030-v1/word_union_v6b/totaltext/evaluation/per_image.json",
+        "observations": "$RUNS/uniform-unet-fusion-20261030-v1/word_union_v6b/totaltext/evaluation/observations.json",
+        "quotas": {
+          "primary": 150,
+          "frozen80_control": 240,
+          "exploratory95_control": 285
+        },
+        "spotting_gt_zip": "$ARTIFACTS/official-benchmark-audit-20261031-v1/gt_totaltext.zip",
+        "spotting_id_map": "$ARTIFACTS/official-benchmark-audit-20261031-v1/totaltext_id_map.json"
+      }
+    },
+    "icdar2015": {
+      "train_inputs": "$RUNS/sota-expert-router-v1/yolo_cascade_v1/inputs/icdar2015_pool_canonical_v2.json",
+      "test_inputs": "$RUNS/sota-expert-router-v1/inputs/icdar2015_test_rgb_only.json",
+      "train_images": 728,
+      "test_images": 500,
+      "train_heavy_npz": {
+        "path": "$RUNS/icdar-router-research-20261102-v1/prepared/icdar2015_none_train.npz",
+        "sha256": "5ae24e9b5aa8227075adea6e4102711ac52a26c467f2e26a6862cf65992edffa"
+      },
+      "test_heavy_npz": {
+        "path": "$RUNS/icdar-router-research-20261102-v1/prepared/icdar2015_none_test.npz",
+        "sha256": "d3fdccbc6b7535f3f7a258ffe72d70f9ae7c9d87b5d16479818e63420f8bbc9e"
+      },
+      "test_heavy_counts_key": "ticls_counts",
+      "train_id_map": "$RUNS/sota-expert-router-v1/yolo_cascade_v1/training_inputs/icdar2015/id_map.json",
+      "train_gt_zip": "$RUNS/sota-expert-router-v1/yolo_cascade_v1/training_inputs/icdar2015/gt.zip",
+      "train_protocol": "native_rrc_word",
+      "test_protocol": "native_rrc_word",
+      "evaluation_dataset": "icdar2015",
+      "test_ticls_predictions": "$RUNS/ijdar-reuse-ctw-20261102-v1/cached_sources/icdar2015/predictions.json",
+      "test_gt_zip": "$ARTIFACTS/official-benchmark-audit-20261031-v1/gt_icdar2015.zip",
+      "test_eval_spec": {
+        "images": 500,
+        "primary_quota": 228,
+        "lexicon": "Weak",
+        "plan": "$RUNS/uniform-unet-fusion-20261030-v1/full/icdar2015/resolved_configuration.json",
+        "per_image": "$RUNS/uniform-unet-fusion-20261030-v1/word_union_v6b/icdar2015/evaluation/per_image.json",
+        "observations": "$RUNS/uniform-unet-fusion-20261030-v1/word_union_v6b/icdar2015/evaluation/observations.json",
+        "quotas": {
+          "primary": 228,
+          "frozen80_control": 400,
+          "exploratory95_control": 475
+        },
+        "spotting_gt_zip": "$ARTIFACTS/official-benchmark-audit-20261031-v1/gt_icdar2015.zip"
+      }
+    },
+    "ctw1500": {
+      "train_inputs": "$RUNS/dataset-router-architecture-20261103-v1/inputs/ctw_train_rgb.json",
+      "test_inputs": "$RUNS/ijdar-reuse-ctw-20261102-v1/ctw/inputs.json",
+      "train_images": 1000,
+      "test_images": 500,
+      "train_heavy_npz": {
+        "path": "$RUNS/dataset-router-architecture-20261103-v1/training/ctw_train.npz",
+        "sha256": "9796b9864f2ef9e2dc674e6adbd15cab8af14ae65baaa08c47e8302657852595"
+      },
+      "test_heavy_npz": {
+        "path": "$RUNS/ticls-source-banks/ctw_word_eval/baselines/counts.npz",
+        "sha256": "426c116b9e8cfb8c07a3684e92ac29f115939a886921e929b3cd3a5f804f3185"
+      },
+      "test_heavy_counts_key": "ticls_native_density",
+      "ctw_train_manifest": "$DATASETS/scene-segmentation-v1/manifests/ctw1500_recognition_train.json",
+      "ctw_data_root": "$DATASETS/scene-segmentation-v1",
+      "train_protocol": "line_supported_words",
+      "test_protocol": "published_vimts_word",
+      "evaluation_dataset": "totaltext",
+      "test_ticls_predictions": "$RUNS/ijdar-reuse-ctw-20261102-v1/ctw/ticls_pad/predictions.json",
+      "vimts": {
+        "gt_zip": "$REPO/artifacts/separated-word-gt-v1/sources/gt_ctw1500_word.zip",
+        "gt_sha256": "c93f48f99d11eb3d5acc8618ec9b5001a69277ee905184ee7c1c26af33011cbf",
+        "source_directory": "$RUNS/ticls-source-banks/ctw_word_eval/source",
+        "source_identity": "$RUNS/ticls-source-banks/ctw_word_eval/source_identity.json",
+        "source_identity_sha256": "30e1ce29a0dad70d595207ac267598226024835b30b61a4be4cf468f59afb630",
+        "expected_images": 500,
+        "protocol": "Published VimTS unmodified CTW1500 word polygons; official VimTS RRC WORD_SPOTTING=False, no lexicon, no source GT curation; separate from original CTW line spotting and prior word-recovery proxy."
+      }
+    }
+  },
+  "seed": 11,
+  "cpu_threads": 4,
+  "router_threads": 1,
+  "split": {
+    "fit_fraction": 0.8,
+    "selection_fraction": 0.1,
+    "audit_fraction": 0.1,
+    "rule": "seed11 permutation of sorted sample IDs, floor FIT/selection sizes, remainder audit"
+  },
+  "candidates": [
+    {
+      "name": "ridge50",
+      "kind": "ridge",
+      "alpha": 50.0
+    },
+    {
+      "name": "hgb7",
+      "kind": "hgb",
+      "max_iter": 60,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20,
+      "l2_regularization": 5.0
+    },
+    {
+      "name": "hgb15",
+      "kind": "hgb",
+      "max_iter": 80,
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 25,
+      "l2_regularization": 10.0
+    },
+    {
+      "name": "extra_trees",
+      "kind": "extra_trees",
+      "n_estimators": 200,
+      "max_depth": 8,
+      "min_samples_leaf": 10,
+      "max_features": 1.0
+    },
+    {
+      "name": "mlp64_32",
+      "kind": "mlp",
+      "hidden_layer_sizes": [
+        64,
+        32
+      ],
+      "alpha": 1.0,
+      "max_iter": 400,
+      "learning_rate_init": 0.001
+    }
+  ],
+  "primary_budget": 0.5,
+  "budgets": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "bootstrap_repetitions": 2000,
+  "bootstrap_seed": 20261103,
+  "compact_runtime": {
+    "python": "$ARTIFACTS/compact-ocr-cascade-20261103-v1/venv/bin/python",
+    "cuda_library_paths": [
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/cublas/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/cuda_cupti/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/cuda_nvrtc/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/cuda_runtime/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/cudnn/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/cufft/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/curand/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/cusolver/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/cusparse/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/nccl/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/nvjitlink/lib",
+      "$REPO/the reader environment/lib/python3.11/site-packages/nvidia/nvtx/lib"
+    ]
+  },
+  "compact_ocr": {
+    "detector": {
+      "model_path": "$ARTIFACTS/compact-ocr-cascade-20261103-v1/PP-OCRv5_mobile_det_onnx/inference.onnx",
+      "model_sha256": "a431985659dc921974177a95adcfbb90fd9e51989a5e04d70d0b75f597b6e61d",
+      "resize_long": 960,
+      "resize_stride": 128,
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "admission_score": 0.6,
+      "minimum_crop_side": 3,
+      "postprocess": {
+        "thresh": 0.3,
+        "box_thresh": 0.1,
+        "max_candidates": 1000,
+        "unclip_ratio": 1.5,
+        "use_dilation": false,
+        "score_mode": "fast",
+        "box_type": "quad"
+      }
+    },
+    "recognizer": {
+      "model_path": "$ARTIFACTS/compact-ocr-cascade-20261103-v1/en_PP-OCRv5_mobile_rec_onnx/inference.onnx",
+      "model_sha256": "b5f833dfc5d0eb71da397b4efa06ebeee9b431b690a47d6af40d77d8eabc557f",
+      "yaml_path": "$ARTIFACTS/compact-ocr-cascade-20261103-v1/en_PP-OCRv5_mobile_rec_onnx/inference.yml",
+      "yaml_sha256": "27e91d0582f40168aa218303c76e184bc78fa7a5d105aad0cfbad8458b441067",
+      "image_shape": [
+        3,
+        48,
+        320
+      ],
+      "maximum_width": 3200,
+      "batch_size": 8,
+      "drop_score": 0.5,
+      "vertical_crop_ratio": 1.5
+    },
+    "runtime": {
+      "cpu_threads": 4,
+      "cuda_options": {
+        "device_id": 0,
+        "gpu_mem_limit": 1073741824,
+        "arena_extend_strategy": "kSameAsRequested",
+        "cudnn_conv_algo_search": "HEURISTIC"
+      }
+    },
+    "feature_settings": {
+      "char_probability_cutoffs": [
+        0.85,
+        0.95
+      ],
+      "proposal_cutoffs": [
+        0.3,
+        0.5
+      ]
+    },
+    "author_sources": {
+      "db_postprocess": {
+        "path": "$ARTIFACTS/compact-ocr-cascade-20261103-v1/source/ppocr/postprocess/db_postprocess.py",
+        "sha256": "a7123cfab47c9f326f9442f4e3ec963694c53a12556fc13eb541169a8e66b67f"
+      },
+      "crop": {
+        "path": "$ARTIFACTS/compact-ocr-cascade-20261103-v1/source/tools/infer/utility.py",
+        "sha256": "edcc41ccd78dee86737a67cc5ed825fba1bdb7fca77cb42ed558a6b3dfa9f634"
+      },
+      "ctc_decoder": {
+        "path": "$ARTIFACTS/compact-ocr-cascade-20261103-v1/source/ppocr/postprocess/rec_postprocess.py",
+        "sha256": "a5e5376514991656f7c7977f4a51ac61224ca6939f8ba41bc18e32ce9d15c872"
+      }
+    },
+    "input_policy": "raw_raster_ignore_exif"
+  },
+  "ctw_count_protocol": {
+    "path": "$REPO/configs/approximate/dataset_router_ctw_protocol_v1.json",
+    "sha256": "03019d3d83ca3ddfda13936650be75b4e6ff304a4b9e4499ab56833460cec475"
+  },
+  "policy_selection": {
+    "primary_max_loss_pp": 0.0,
+    "secondary_max_loss_pp": 0.5,
+    "minimum_accepted_word_precision": 0.98,
+    "selection_rule": "Within each candidate/domain maximize accepted images subject to selection micro-F1 loss bound and accepted care-word precision>=.98; no TEST selection. Empty accept sets valid. Freeze scalar thresholds for image-by-image deployment.",
+    "common_architecture_rule": "Maximize macro selection micro-F1 at fixed50% TiCLS among five predeclared architectures; domain-specific weights; one ICDAR None router/mask also used for Weak."
+  },
+  "online": {
+    "datasets": {
+      "totaltext": {
+        "deepsolo_profile": "$RUNS/uniform-unet-fusion-20261030-v1/deployment_boundary_v1/profiles/totaltext.json",
+        "deepsolo_runtime": "$RUNS/deepsolo-icdar2015-gap-20261028-v1/runtime.json",
+        "deepsolo_source": "$ARTIFACTS/deepsolo-host/DeepSolo-upstream/DeepSolo",
+        "ticls_config": "$RUNS/dataset-router-architecture-20261103-v1/inputs/ctw_runtime.json"
+      },
+      "icdar2015": {
+        "deepsolo_profile": "$RUNS/uniform-unet-fusion-20261030-v1/deployment_boundary_v1/profiles/icdar2015.json",
+        "deepsolo_runtime": "$RUNS/deepsolo-icdar2015-gap-20261028-v1/runtime.json",
+        "deepsolo_source": "$ARTIFACTS/deepsolo-host/DeepSolo-upstream/DeepSolo",
+        "ticls_config": "$RUNS/sota-expert-router-v1/reference_test_v2/icdar2015/resolved_configuration.json"
+      }
+    },
+    "legacy_python": "$PYTHON",
+    "images_per_dataset": 16,
+    "repetitions": 2,
+    "warmup_images": 2,
+    "sample_seed": 20261103,
+    "methods": [
+      "always_ticls",
+      "compact_only",
+      "primary",
+      "balanced",
+      "budget50"
+    ],
+    "output_directory": "optimized_online",
+    "lifecycle": "both models resident; release idle allocator cache before stages, charge overhead to wall time"
+  },
+  "storage": {
+    "minimum_free_bytes": 12884901888,
+    "expected_new_bytes": 1073741824,
+    "policy": "reuse raw caches; compact arrays/scores only; no new neural checkpoints"
+  },
+  "scientific_choices": [
+    {
+      "classification": "REPOSITORY_SPECIFIED",
+      "choice": "Official PaddlePaddle PP-OCRv5 Mobile detector and English recognizer ONNX revisions and SHA256; exact author DB postprocess, crop function, BGR normalization, CTC charset/decoding. Preserve all raw text and predictions."
+    },
+    {
+      "classification": "ASSUMPTION",
+      "ambiguity": "COMPACT-OCR-CASCADE-20261103-001",
+      "choice": "Replace DeepSolo only in this new approximate extension. English-specific recognition, same40 observable features across datasets, source-only common architecture search and per-domain refits; high-precision acceptance versus TiCLS fallback. Recognition/dependent methods and raw checkpoint metadata remain explicit."
+    },
+    {
+      "classification": "ASSUMPTION",
+      "choice": "Keep author admission .6/drop .5; retain extra detector candidates down to.1 for router evidence without recognizing them. Additional rejected-candidate computation is charged to runtime. No dummy DeepSolo features, mutable revisions, GT routing features, or TEST tuning."
+    },
+    {
+      "classification": "ASSUMPTION",
+      "choice": "Primary source selection permits zero observed micro-F1 loss and requires98% accepted care-word precision; secondary allows.5pp loss. These empirical development constraints are not test-time guarantees. Report accepted-image/word precision, omitted words, all TiCLS counts, full-test50% controls, timing and uncertainty."
+    },
+    {
+      "classification": "ASSUMPTION",
+      "choice": "USER_SELECTED: TRAIN line-supported word-occurrence counts, unmodified line annotations, no guessed word polygons. TEST published unmodified VimTS word polygons. Label-protocol mismatch explicitly limits interpretation."
+    },
+    {
+      "classification": "HARDWARE_DEVIATION",
+      "choice": "PAPER RTX3090 FP32 ORT CUDA1GB per-session arenas, recognition batch8 and four CPU threads in newly authorized isolated Python3.11 runtime; original TiCLS stays in legacy runtime. ORT has no public allocated/reserved API; null fields explicitly identify this limitation and sampled per-process GPU resident memory is measured. No8GB claim."
+    },
+    {
+      "classification": "UNRESOLVED",
+      "choice": "Historical data exposure, public expert pretraining overlap, CTW proxy training versus word-polygon evaluation, and generalization of empirical source precision remain limitations. OpenCV recognizer probe and unavailable ORT1.20.1 install attempt failed; preserve both. Exact learnable-parameter count of fused ONNX artifacts is not inferred from file size."
+    },
+    {
+      "classification": "ASSUMPTION",
+      "choice": "Word prediction unit: use exact pinned author CTC character grouping and observed temporal positions; for multiword lines map normalized CTC intervals through the rectified detector-quad axes to original coordinates. Single-group text retains its native detector quad. Preserve original line text/geometry, token positions, word predictions and rejected degenerate geometries. This changes predictions only; no GT polygons or labels are split, curated or changed. Native line output remains auditable. V1 was a two-image/domain engineering smoke only."
+    },
+    {
+      "classification": "REPOSITORY_SPECIFIED",
+      "choice": "Use the same qualified raw_raster_ignore_exif decoding as TiCLS/official annotation coordinates; preserve V2 collection failure on Total-Text490 EXIF6. Rerun all images, without dropping or synthesizing the failed sample. V3 retains per-image JSONL checkpoints and explicit failure artifacts."
+    }
+  ],
+  "pinned_inputs": {
+    "$ARTIFACTS/compact-ocr-cascade-20261103-v1/model_assets.json": "1a69e9c6997008db57a03d4c7ece50c352ec04ba2ba9da3d28e05d3ced0efa70",
+    "$ARTIFACTS/compact-ocr-cascade-20261103-v1/pip_freeze.txt": "f4f585b99134916e61075333e490d1c6ab99424bc7fb2db856ce30eec6c29f0b",
+    "$ARTIFACTS/compact-ocr-cascade-20261103-v1/source_identity.json": "6a38aec0290e3aa78e509cf46f553a180425e34070481d0f9c6917e25725dfed",
+    "$RUNS/sota-expert-router-v1/yolo_cascade_v1/inputs/totaltext_pool_canonical_v2.json": "13df29411f5e223009b85627a25694f91c5ecdbc249bb86611cca0ef1edaf02d",
+    "$RUNS/sota-expert-router-v1/inputs/totaltext_test_rgb_only.json": "b416c5523c9ee6588311e22379b0775f4e813aa78ba6a4b83cad3155cd9eac9b",
+    "$RUNS/icdar-router-research-20261102-v1/prepared/totaltext_none_train.npz": "4e3e21e9ee6363a72facac5b3589040c7ed6171c845fe4b4d6d9976b9e837328",
+    "$RUNS/icdar-router-research-20261102-v1/prepared/totaltext_none_test.npz": "344d2ce8676574b7c5873a85080e2b9afd5495be1a996eec8274b111f0c06236",
+    "$RUNS/ijdar-reuse-ctw-20261102-v1/cached_sources/totaltext/predictions.json": "2bb55d643808891fadc4f4660ca68022e007ba3b6177497532c2800c3affe49e",
+    "$RUNS/sota-expert-router-v1/yolo_cascade_v1/training_inputs/totaltext/gt.zip": "5c867f084bb904f8261a1d6aef14ceda0a0f26e63468a49566acda246ed74902",
+    "$RUNS/sota-expert-router-v1/yolo_cascade_v1/training_inputs/totaltext/id_map.json": "bfa47401711c93bbbb865aefa1921f0916922ca23a95248416ac246df9c4196d",
+    "$RUNS/sota-expert-router-v1/yolo_cascade_v1/inputs/icdar2015_pool_canonical_v2.json": "e66fa970121e5ded715d8482fa15507389ab3d92f589bc299b020eef12f8627a",
+    "$RUNS/sota-expert-router-v1/inputs/icdar2015_test_rgb_only.json": "d096ea8952835c092303131c11a317ba89d1ebe9890fc9f3cdcf4d6ddb012139",
+    "$RUNS/icdar-router-research-20261102-v1/prepared/icdar2015_none_train.npz": "5ae24e9b5aa8227075adea6e4102711ac52a26c467f2e26a6862cf65992edffa",
+    "$RUNS/icdar-router-research-20261102-v1/prepared/icdar2015_none_test.npz": "d3fdccbc6b7535f3f7a258ffe72d70f9ae7c9d87b5d16479818e63420f8bbc9e",
+    "$RUNS/ijdar-reuse-ctw-20261102-v1/cached_sources/icdar2015/predictions.json": "3fd2e109ffac196649e4aca9e22f2b07d1d4ff3de5852243551ef29b0611542a",
+    "$RUNS/sota-expert-router-v1/yolo_cascade_v1/training_inputs/icdar2015/gt.zip": "7d8d5147b9193e58543fadd30148cf85340ff1a1aa48ac2a8c4b5947b74d4914",
+    "$RUNS/sota-expert-router-v1/yolo_cascade_v1/training_inputs/icdar2015/id_map.json": "ab6dfd2b5525405a5e35433c7f5dc9f66a3df7503a22f3811e14386e4a166aef",
+    "$RUNS/dataset-router-architecture-20261103-v1/inputs/ctw_train_rgb.json": "f447d5fab0f2ebddfb4185e9f1a60a4173287e28505d4765f90c38bb4e76d578",
+    "$RUNS/ijdar-reuse-ctw-20261102-v1/ctw/inputs.json": "5867e99d53afb5af6ced2a38da1bb37d8e7701ca21eaea4e0c82b59f523063b9",
+    "$RUNS/dataset-router-architecture-20261103-v1/training/ctw_train.npz": "9796b9864f2ef9e2dc674e6adbd15cab8af14ae65baaa08c47e8302657852595",
+    "$RUNS/ticls-source-banks/ctw_word_eval/baselines/counts.npz": "426c116b9e8cfb8c07a3684e92ac29f115939a886921e929b3cd3a5f804f3185",
+    "$RUNS/ijdar-reuse-ctw-20261102-v1/ctw/ticls_pad/predictions.json": "9a59b5148f8a5db8882c83e5590bf4316cc253ccdbf10641ad73085a196a3745",
+    "$ARTIFACTS/compact-ocr-cascade-20261103-v1/source/ppocr/postprocess/db_postprocess.py": "a7123cfab47c9f326f9442f4e3ec963694c53a12556fc13eb541169a8e66b67f",
+    "$ARTIFACTS/compact-ocr-cascade-20261103-v1/source/tools/infer/utility.py": "edcc41ccd78dee86737a67cc5ed825fba1bdb7fca77cb42ed558a6b3dfa9f634",
+    "$ARTIFACTS/compact-ocr-cascade-20261103-v1/source/ppocr/postprocess/rec_postprocess.py": "a5e5376514991656f7c7977f4a51ac61224ca6939f8ba41bc18e32ce9d15c872"
+  }
+}
