@@ -7,10 +7,15 @@ A gradient-boosted classifier scores every prediction from eleven detection, rec
 independent recogniser (PARSeq-S\*, PARSeq-S retrained without ArT), and a second classifier combines the two readings with the first-step evidence.
 The experiments use DeepSolo, TiCLS and PP-OCRv5 Mobile on Total-Text, ICDAR2015 and CTW1500 (nine spotter x benchmark rows).
 
+![SecondLook overview: a frozen spotter proposes candidates, a first classifier accepts the confident ones, uncertain ones are re-read by PARSeq-S* and decided by a second classifier](docs/figures/overview.png)
+
+*Overview of the method. Both classifiers are fitted on the labelled training split only; the spotter is never modified.*
+
 ## Where to start
 
 | You want to | Read |
 |---|---|
+| download the datasets and models we used (exact versions, sha256) | [docs/SOURCES.md](docs/SOURCES.md) |
 | find the code behind a table or figure of the paper | [docs/PAPER_MAP.md](docs/PAPER_MAP.md) |
 | follow the method step by step in the code | [docs/PIPELINE.md](docs/PIPELINE.md) |
 | know which data, checkpoints and stored outputs the code expects | [docs/DATA_AND_ASSETS.md](docs/DATA_AND_ASSETS.md) |
@@ -44,7 +49,7 @@ tests/                import and unit tests that need no data
 
 The analysis code runs on CPU with Python 3.8, NumPy 1.20, SciPy 1.5, scikit-learn 0.23, Shapely 2.0, OpenCV 4.5, Polygon3 and PyTorch 1.9
 (see `requirements.txt`). The official DeepSolo and TiCLS evaluators and sources are third-party code that is not redistributed here; they are expected under
-`$SECONDLOOK_ARTIFACTS` (see [docs/DATA_AND_ASSETS.md](docs/DATA_AND_ASSETS.md)).
+`$SECONDLOOK_ARTIFACTS`. [docs/SOURCES.md](docs/SOURCES.md) says where to download each dataset and model, with the version and the sha256 of the file we used; [docs/DATA_AND_ASSETS.md](docs/DATA_AND_ASSETS.md) says where they are expected.
 
 ```bash
 export SECONDLOOK_RUNS=/path/to/runs               # stored candidate banks, readings and run outputs

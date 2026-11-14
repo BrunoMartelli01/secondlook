@@ -1,6 +1,6 @@
 # Data, checkpoints and stored outputs
 
-None of the following is part of this repository. All locations are set through environment variables (`secondlook/paths.py`); the sub-directory names below are the
+None of the following is part of this repository; [SOURCES.md](SOURCES.md) says where to download each dataset and model and gives the sha256 of the file we used. All locations are set through environment variables (`secondlook/paths.py`); the sub-directory names below are the
 ones the code looks for.
 
 ## `$SECONDLOOK_DATASETS`
